@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/main.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title + " - A. N. Field"}>
+  <div class="flex flex-row justify-between">
+    <section id="description" class="mr-10">
+      <h1 class="font-title underline text-2xl">{frontmatter.title}</h1>
+      <h2 class="font-title text-gray-500 italic">{frontmatter.subtitle}</h2>
+      <div class="font-body border-t-2 mt-5 pt-5">
+        <slot />
+      </div>
+      {
+        frontmatter.sequel ? (
+          <a href={"/books/" + frontmatter.sequel}>
+            <button class="mt-10 p-3 rounded bg-red-300 hover:bg-red-400 active:bg-red-500 transition-all">
+              See the sequel
+            </button>
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </section>
+    <section id="cover" class="min-w-[30vw] flex justify-center items-center">
+      <div class="max-h-[80vh] flex flex-col items-center justify-between">
+        <img src={frontmatter.coverImage} class="drop-shadow" />
+        <a href={frontmatter.amazonLink}>
+          <button
+            class="m-10 p-3 rounded bg-red-300 hover:bg-red-400 active:bg-red-500 transition-all"
+          >
+            Buy It On Amazon
+          </button>
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
