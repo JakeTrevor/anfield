@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/book.astro
 title: Brie
-amazonLink: https://www.amazon.co.uk/Brie-N-Field/dp/1519488548/ref=sr_1_1?crid=356DQ60L7KH35&keywords=brie+a+n+field&qid=1671378100&sprefix=brie+a+n+field%2Caps%2C246&sr=8-1
 subtitle:
+amazonLink: https://www.amazon.com/Brie-N-Field/dp/1519488548
 coverImage: /brie.jpg
 ---
 

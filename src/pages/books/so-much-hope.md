@@ -2,9 +2,9 @@
 layout: ../../layouts/book.astro
 title: So Much Hope
 subtitle: A Little Flight Of Fancy Book 1
+amazonLink: https://www.amazon.co.uk/Little-Flight-Fancy-trilogy-Much/dp/1505378044?ref=pf_vv_at_pdctrvw_dp
 coverImage: /soMuchHope.jpg
-amazonLinke: https://www.amazon.co.uk/Little-Flight-Fancy-trilogy-Much/dp/1505378044?ref=pf_vv_at_pdctrvw_dp
-sequel: brie
+sequel: unfinished-business
 ---
 
 This is the first book in a trilogy. It is a tale of violence murder and rape;
