@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/main.astro";
+const allBooks = await Astro.glob("./books/*.md");
+---
+
+<Layout title="A. N. Field">
+  <h1 class="text-title text-2xl underline mb-10 text-slate-50">
+    Books by A. N. Field:
+  </h1>
+  <div class="grid grid-cols-3 gap-10">
+    {
+      allBooks.map((book, i) => {
+        let { coverImage } = book.frontmatter;
+        return (
+          <a
+            href={book.url}
+            class="hover:scale-110 transition-all duration-[800ms] drop-shadow-lg"
+          >
+            <img src={coverImage} />
+          </a>
+        );
+      })
+    }
+  </div>
+</Layout>

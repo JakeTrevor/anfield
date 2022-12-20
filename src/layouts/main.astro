@@ -19,15 +19,19 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body
+    class="bg-[url(/liverpool.jpg)] bg-contain backdrop-grayscale min-h-[100vh] -z-10"
+  >
     <header
-      class="w-full h-10 px-5 py-7 bg-red-500 drop-shadow flex flex-row items-center"
+      class="w-full h-10 px-5 py-7 bg-red-600 drop-shadow flex flex-row items-center"
     >
       <a href="/">
-        <h1 class="font-title text-white text-3xl">A. N. Field</h1>
+        <h1 class="font-title text-slate-100 text-3xl">A. N. Field</h1>
       </a>
     </header>
-    <main class="p-10">
+    <div class="h-full w-full bg-gray-700 bg-opacity-20 absolute top-0 -z-[5]">
+    </div>
+    <main class="p-10 z-10">
       <slot />
     </main>
   </body>

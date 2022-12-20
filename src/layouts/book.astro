@@ -1,39 +1,65 @@
 ---
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  subtitle?: string;
+  amazonLink: string;
+  coverImage: string;
+  sequel?: string;
+  prequel?: string;
+}>;
+
 import Layout from "../layouts/main.astro";
-const { frontmatter } = Astro.props;
+const { title, subtitle, amazonLink, coverImage, sequel, prequel } =
+  Astro.props.frontmatter;
+
+const buttonStyle =
+  "p-3 rounded bg-red-600 hover:bg-red-500 hover:scale-110 active:bg-red-500 transition-all drop-shadow-2xl text-white duration-500";
 ---
 
-<Layout title={frontmatter.title + " - A. N. Field"}>
-  <div class="flex flex-row justify-between">
-    <section id="description" class="mr-10">
-      <h1 class="font-title underline text-2xl">{frontmatter.title}</h1>
-      <h2 class="font-title text-gray-500 italic">{frontmatter.subtitle}</h2>
-      <div class="font-body border-t-2 mt-5 pt-5">
+<Layout title={title + " - A. N. Field"}>
+  <div class="grid grid-cols-5 gap-10">
+    <section id="description" class="col-span-4">
+      <h1 class="font-title text-slate-100 underline text-2xl">{title}</h1>
+      {subtitle && <h2 class="font-title text-gray-300 italic">{subtitle}</h2>}
+      <div
+        class="font-body border-t-2 border-slate-100 mt-5 p-5 text-slate-100 bg-slate-900 bg-opacity-20"
+      >
         <slot />
       </div>
+    </section>
+    <section id="cover" class="flex justify-center items-center">
+      <div class="max-h-[80vh] flex flex-col items-center justify-between">
+        <img src={coverImage} class="drop-shadow" />
+      </div>
+    </section>
+    <section
+      id="links"
+      class="grid grid-cols-5 gap-10 place-items-center col-span-5"
+    >
       {
-        frontmatter.sequel ? (
-          <a href={"/books/" + frontmatter.sequel}>
-            <button class="mt-10 p-3 rounded bg-red-300 hover:bg-red-400 active:bg-red-500 transition-all">
-              See the sequel
-            </button>
+        prequel ? (
+          <a href={"/books/" + prequel}>
+            <button class={buttonStyle}>See the prequel</button>
           </a>
         ) : (
           <div />
         )
       }
-    </section>
-    <section id="cover" class="min-w-[30vw] flex justify-center items-center">
-      <div class="max-h-[80vh] flex flex-col items-center justify-between">
-        <img src={frontmatter.coverImage} class="drop-shadow" />
-        <a href={frontmatter.amazonLink}>
-          <button
-            class="m-10 p-3 rounded bg-red-300 hover:bg-red-400 active:bg-red-500 transition-all"
-          >
-            Buy It On Amazon
-          </button>
-        </a>
-      </div>
+      <div></div>
+      {
+        sequel ? (
+          <a href={"/books/" + sequel}>
+            <button class={buttonStyle}>See the sequel</button>
+          </a>
+        ) : (
+          <div />
+        )
+      }<div></div>
+      <a href={amazonLink}>
+        <button class={buttonStyle}> Buy It On Amazon</button>
+      </a>
     </section>
   </div>
 </Layout>
